@@ -10,6 +10,18 @@ def welcome():
     print("\nOptions:\n/s - search;\n/a - add a new entry;\n/q - quit.\n")
 
 
+def print_match(i):
+
+    print(
+        '\n',
+        f"Nickname: {i}\n",
+        f"Full name: {contacts[i]['name']}\n",
+        f"Phone number: {contacts[i]['number']}\n",
+        f"Address: {contacts[i]['address']}\n",
+        '\n'
+        )
+
+
 def yesNo():
 
     while True:
@@ -31,28 +43,13 @@ def addContact():
     add = False
 
     for i in contacts:
-
         if nickname.lower() == i.lower():
             print("\nEntry with such nickname already exists!\n")
-
-            print('\n',
-            f"Nickname: {i}\n",
-            f"Full name: {contacts[i]['name']}\n",
-            f"Phone number: {contacts[i]['number']}\n",
-            f"Address: {contacts[i]['address']}\n",
-            '\n')
-
+            print_match(i)
             add = yesNo()
         elif name.lower() == contacts[i]['name']:
             print("\nEntry with such name already exists!\n")
-
-            print('\n',
-            f"Nickname: {i}\n",
-            f"Full name: {contacts[i]['name']}\n",
-            f"Phone number: {contacts[i]['number']}\n",
-            f"Address: {contacts[i]['address']}\n",
-            '\n')
-
+            print_match(i)
             add = yesNo()
         else:
             add = True
@@ -62,22 +59,21 @@ def addContact():
 
 
 def searchContact():
+
     print("Enter a nickname/name/number:\n(example: Johnny or John Doe or 202-456-1414)")
     search_query = input(" - ")
+    no_match = 1
 
     for i in contacts:
+
         if search_query.lower() == i.lower() or search_query.lower() ==  contacts[i]['name'].lower() or search_query.lower() == contacts[i]['number'].lower():
-            print('\n',
-            f"Nickname: {i}\n",
-            f"Full name: {contacts[i]['name']}\n",
-            f"Phone number: {contacts[i]['number']}\n",
-            f"Address: {contacts[i]['address']}\n",
-            '\n')
-        else:
-            return print("\nNo matches found\n")
+            no_match = 0
+            print_match(i)
+    
+    if no_match:
+        return print("No Matches Found!")
+
             
-
-
 def main():
 
     while True:
@@ -96,5 +92,5 @@ def main():
             print("Wrong Command!!!")
             print("Restarting...")
 
-print(contacts)
+
 main()
