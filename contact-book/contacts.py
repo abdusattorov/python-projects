@@ -71,7 +71,7 @@ def searchContact():
             print_match(i)
     
     if no_match:
-        return print("No Matches Found!")
+        return print("\nNo Matches Found!\n")
 
             
 def main():
@@ -87,7 +87,7 @@ def main():
         elif choice == '/a':
             addContact()
         elif choice == '/q':
-            quit()
+            break
         else:
             print("Wrong Command!!!")
             print("Restarting...")
