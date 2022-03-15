@@ -1,13 +1,13 @@
 contacts = {
     'Johnny' : {'name': 'John Doe', 'number':'202-456-1414', 'address': '1600 Pennsylvania Avenue NW, Washington, D.C.'},
-    'Alex' : {'name': 'Alex Black', 'number':'99-369-33-27', 'address': '54 Gulobod, Shayhontohur, Tashkent'}
+    'Diana' : {'name': 'Diana Miares', 'number':'90-000-00-00', 'address': '67 Navoiy, Shayhontohur, Tashkent'}
     }
 
 def welcome():
     print("========================================")
     print("Contacts book".center(40))
     print("========================================")
-    print("\nOptions:\n/s - search;\n/a - add a new entry;\n/q - quit.\n")
+    print("\nOptions:\n/s - search;\n/a - add a new entry;\n/l - show all\n/q - quit.\n")
 
 
 def print_match(i):
@@ -17,8 +17,7 @@ def print_match(i):
         f"Nickname: {i}\n",
         f"Full name: {contacts[i]['name']}\n",
         f"Phone number: {contacts[i]['number']}\n",
-        f"Address: {contacts[i]['address']}\n",
-        '\n'
+        f"Address: {contacts[i]['address']}\n"
         )
 
 
@@ -88,6 +87,9 @@ def main():
             addContact()
         elif choice == '/q':
             break
+        elif choice == '/l':
+            for i in contacts:
+                print_match(i)
         else:
             print("Wrong Command!!!")
             print("Restarting...")
