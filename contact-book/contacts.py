@@ -7,7 +7,7 @@ def welcome():
     print("========================================")
     print("Contacts book".center(40))
     print("========================================")
-    print("\nOptions:\n/s - search;\n/a - add a new entry;\n/l - show all\n/q - quit.\n")
+    print("\nOptions:\n/s - search;\n/a - add a new entry;\n/l - show all;\n/q - quit.\n")
 
 
 def print_match(i):
