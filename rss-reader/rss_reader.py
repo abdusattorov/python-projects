@@ -47,14 +47,14 @@ def check_url(stdin_url: str) -> bool:
         print(f"\nChecking the url [{stdin_url}]...")
         url = requests.get(stdin_url)
         url.raise_for_status()
-    except requests.exceptions.ConnectionError:
-        print("\nNo internet connection :(\n")
-        status = False
     except requests.HTTPError as http_err:
         print(f"\nHTTP Error occured\n{http_err}\n")
         status = False
     except requests.exceptions.InvalidURL as url_err:
         print(f"\nAn error occured: {url_err}\n")
+        status = False
+    except requests.exceptions.ConnectionError:
+        print("\nNo internet connection...\nor seems like I can't parse this type of link :(\n")
         status = False
     except requests.exceptions.InvalidSchema as schema_err:
         print(f"\n{schema_err}")
