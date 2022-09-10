@@ -21,7 +21,7 @@ def display(letters, word):
 
 
 def main():
-    
+
     while True:
 
         strength = 10
@@ -47,7 +47,7 @@ def main():
                 break
 
         if strength == 0:
-            print(f"You lost :(\nThe word was {word}")
+            print(f"🤖: I won 😎 \nThe word was {word}")
 
         again = True
 

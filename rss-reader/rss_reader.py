@@ -1,7 +1,7 @@
 """RSS feed reader
 
-This is the main script of the program allows the user to extract RSS feed data from the RSS link provided
-and format and print the data to the console.
+This is the main script of the program.
+This program accepts RSS feed link and allows the user to extract RSS feed data, format it and print it to the console.
 
 This tool can convert and print the data in a JSON format or as table.
 
@@ -141,12 +141,10 @@ def print_rss(feed_dict: dict) -> None:
     if args.table:
 
         for key in feed_dict.keys():
-            print(f"Printing {len(feed_dict[key])} entries...")
-            print("\n")
-            print(f"Feed: {key}")
-            print("\n")
+            print(f"\nPrinting {len(feed_dict[key])} entries...")
+            print(f"\nFeed: {key}")
             for entry in feed_dict[key]:
-                print(f"Entry #{entry+1}")
+                print(f"\nEntry #{entry+1}")
                 table = []
                 for tag, text in feed_dict[key][entry].items():
                     if tag == "desc":
@@ -154,16 +152,13 @@ def print_rss(feed_dict: dict) -> None:
                     new_row = [tag.capitalize(), text]
                     table.append(new_row)
 
-                print(tabulate.tabulate(table, tablefmt=("fancy_grid")))
-                print("\n")
+                print(tabulate.tabulate(table, tablefmt=("fancy_grid")), '\n')
 
     else:
 
         for key in feed_dict.keys():
             print(f"Printing {len(feed_dict[key])} entries...")
-            print("\n")
-            print(f"Feed: {key}")
-            print("\n")
+            print(f"\nFeed: {key}\n")
             for entry in feed_dict[key]:
                 print(f"Entry #{entry+1}")
                 for tag, text in feed_dict[key][entry].items():
