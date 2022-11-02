@@ -4,10 +4,17 @@ import requests
 source = "https://everyayah.com/data/"
 reciter = "Husary_128kbps/"
 
-input_reciter = input()
 surah_index = int(input("Surah index:\n>>> "))
 start = int(input("Start\n>>> "))
 end = int(input("End\n>>> "))
+
+def get_intro(index):
+    if index == 1:
+        return requests.get(source + reciter + "audhubillah.mp3")
+    else:
+        audio1 = requests.get(source + reciter + "audhubillah.mp3")
+        audio2 = requests.get(source + reciter + "bismillah.mp3")
+        return (audio1, audio2)
 
 for i in range(start, end+1):
     
